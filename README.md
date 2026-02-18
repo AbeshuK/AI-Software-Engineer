@@ -1,64 +1,49 @@
 # AI Experts Assignment (Python)
 
-This assignment evaluates your ability to:
+This repository contains the solution for the AI Software Engineer assignment. It demonstrates:
 
-- set up a small Python project to run reliably (locally + in Docker),
-- pin dependencies for reproducible installs,
-- write focused tests to reproduce a bug,
-- implement a minimal, reviewable fix.
+- Setting up a small Python project to run reliably (locally + Docker)
+- Pinning dependencies for reproducible installs
+- Writing focused tests to reproduce a bug
+- Implementing a minimal, reviewable fix
 
-## What you will do
+---
 
-### 1) Dockerfile (required)
+## Project Structure
+-app/ # Application code
+-tests/ # Test suite
+-Dockerfile # Docker build instructions
+-requirements.txt # Pinned dependencies
+-EXPLANATION.md # Explanation of bug fix
+-README.md # This file
 
-Create a `Dockerfile` so the project can run the test suite in a non-interactive, CI-style environment.
 
-Requirements:
 
-- requirements.txt exists and is used during build (pip install -r requirements.txt)
-- pytest must be included/pinned in requirements.txt
-- The image must run tests by default (use: `CMD ["python", "-m", "pytest", "-v"]`).
-- The build must install dependencies from `requirements.txt`.
+---
 
-### 2) requirements.txt (required)
+## Running Tests
 
-Create a `requirements.txt` with pinned versions, using this format:
+### Locally
 
-- `package==x.y.z`
+1. Create and activate a virtual environment:
 
-### 3) README updates (required)
+```bash
+python -m venv venv
+# Windows
+.\venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
 
-Update this README to include:
+2. Install dependencies:
+pip install -r requirements.txt
 
-- how to run the tests locally,
-- how to build and run tests with Docker.
+3. Run the tests:
+pytest -v
 
-### 4) Find + fix a bug (required)
 
-There is a bug somewhere in this repository.
+### Using Docker
+1 . Build the Docker image:
+docker build -t ai-assignment .
 
-Your tasks:
-
-- Identify the bug.
-- Apply the smallest possible fix to make the tests pass.
-- Keep the change minimal and reviewable (no refactors).
-
-## Constraints
-
-- Keep changes minimal and reviewable.
-- Do not refactor unrelated code.
-- Do not introduce extra tooling unless required.
-- You may add tests and the smallest code change needed to fix the bug.
-
-### 5) EXPLANATION.md (required)
-
-Create `EXPLANATION.md` (max 250 words) containing:
-
-- **What was the bug?**
-- **Why did it happen?**
-- **Why does your fix solve it?**
-- **One realistic case / edge case your tests still don’t cover**
-
-## Submission
-
-- Submit a public GitHub repository URL containing your solution to the Google form link provided.
+2. Run tests inside Docker:
+docker run ai-assignment
